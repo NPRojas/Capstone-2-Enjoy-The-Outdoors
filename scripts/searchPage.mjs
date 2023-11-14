@@ -4,13 +4,34 @@ import { parkTypesArray } from "./parkTypeData.mjs";
 
 window.onload = function() {
     //load the dropdown list
-    initLocationListDropdown();
-    initParkListDropdown();
-    initParkTypeDropdown();
+    initSearchFilter();
+}
+
+function initSearchFilter() {
+    const radioBtnContainer = document.querySelector('#radioBtnContainer');
+    
+    radioBtnContainer.addEventListener('change', function (e) {
+        const locationRadio = document.querySelector('#location');
+        const parkTypeRadio = document.querySelector('#parkType');
+        const locationList = document.querySelector('#locationsList');
+        const parkTypeList = document.querySelector('#parkTypeList');
+
+        if (e.target === locationRadio) {
+            initLocationListDropdown();
+            parkTypeList.style.display = 'none';
+            locationList.style.display = 'block';
+        } else if (e.target === parkTypeRadio) {
+            initParkTypeDropdown();
+            locationList.style.display = 'none';
+            parkTypeList.style.display = 'block';
+        }
+    });
 }
 
 function convertArraytoDropdown(array, dropdown) {
     let length = array.length;
+    dropdown.options.length = 1;
+    
     for (let i = 0; i < length; i++) {
         let theOption = new Option(array[i],array[i]);
         dropdown.appendChild(theOption);
