@@ -1,10 +1,12 @@
 import { nationalParksArray } from "./nationalParkData.mjs";
 import { locationsArray } from "./locationData.mjs";
+import { parkTypesArray } from "./parkTypeData.mjs";
 
 window.onload = function() {
     //load the dropdown list
     initLocationListDropdown();
     initParkListDropdown();
+    initParkTypeDropdown();
 }
 
 function initLocationListDropdown() {
@@ -14,6 +16,15 @@ function initLocationListDropdown() {
     for (let i = 0; i < locationLength; i++) {
         let theOption = new Option(locationsArray[i], locationsArray[i]);
         locationList.appendChild(theOption);
+    }
+}
+
+function initParkTypeDropdown() {
+    const parkTypeList = document.querySelector('#parkTypeList');
+    let length = parkTypesArray.length;
+    for (let i = 0; i < length; i++) {
+        let theOption = new Option(parkTypesArray[i], parkTypesArray[i]);
+        parkTypeList.appendChild(theOption);
     }
 }
 
@@ -33,6 +44,5 @@ function initParkListDropdown() {
                 parkList.appendChild(theOption);
             }
         }
-
     }
 }
