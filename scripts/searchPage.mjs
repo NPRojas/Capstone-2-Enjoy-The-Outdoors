@@ -9,23 +9,22 @@ window.onload = function() {
     initParkTypeDropdown();
 }
 
-function initLocationListDropdown() {
-    // dropdown of locationArray
-    const locationList = document.querySelector('#locationsList');
-    let locationLength = locationsArray.length;
-    for (let i = 0; i < locationLength; i++) {
-        let theOption = new Option(locationsArray[i], locationsArray[i]);
-        locationList.appendChild(theOption);
+function convertArraytoDropdown(array, dropdown) {
+    let length = array.length;
+    for (let i = 0; i < length; i++) {
+        let theOption = new Option(array[i],array[i]);
+        dropdown.appendChild(theOption);
     }
+}
+
+function initLocationListDropdown() {
+    const locationList = document.querySelector('#locationsList');
+    convertArraytoDropdown(locationsArray, locationList);
 }
 
 function initParkTypeDropdown() {
     const parkTypeList = document.querySelector('#parkTypeList');
-    let length = parkTypesArray.length;
-    for (let i = 0; i < length; i++) {
-        let theOption = new Option(parkTypesArray[i], parkTypesArray[i]);
-        parkTypeList.appendChild(theOption);
-    }
+    convertArraytoDropdown(parkTypesArray, parkTypeList);
 }
 
 function initParkListDropdown() {
