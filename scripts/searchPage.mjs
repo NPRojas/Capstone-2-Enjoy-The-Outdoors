@@ -25,13 +25,14 @@ function initSearchFilter() {
             locationList.style.display = 'none';
             parkTypeList.style.display = 'block';
         }
+    initParkListDropdown();
     });
 }
 
 function convertArraytoDropdown(array, dropdown) {
     let length = array.length;
     dropdown.options.length = 1;
-    
+
     for (let i = 0; i < length; i++) {
         let theOption = new Option(array[i],array[i]);
         dropdown.appendChild(theOption);
@@ -49,20 +50,35 @@ function initParkTypeDropdown() {
 }
 
 function initParkListDropdown() {
+    // const radioBtnContainer = document.querySelector('#radioBtnContainer');
     const locationList = document.querySelector('#locationsList');
+    const parkTypeList = document.querySelector('#parkTypeList');
     const parkList = document.querySelector('#parkList');
 
-    let length = nationalParksArray.length;
+    let parksArrayLength = nationalParksArray.length;
 
     locationList.onchange = function() {
         //clear the list
         parkList.options.length = 1;
         // add options to the list
-        for (let i = 0; i < length; i++) {
+        for (let i = 0; i < parksArrayLength; i++) {
+
             if (locationList.value == nationalParksArray[i].State) {
                 let theOption = new Option(nationalParksArray[i].LocationName, nationalParksArray[i].LocationID);
                 parkList.appendChild(theOption);
             }
+        }
+    }
+
+    parkTypeList.onchange = function() {
+        parkList.options.length = 1;
+
+        for (let i = 0; i < parksArrayLength; i++) {
+            if(nationalParksArray[i].LocationName.includes(parkTypeList.value)) {
+                let theOption = new Option(nationalParksArray[i].LocationName, nationalParksArray[i].LocationID);
+                parkList.appendChild(theOption);
+            }
+
         }
     }
 }
