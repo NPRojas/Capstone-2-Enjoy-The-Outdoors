@@ -4,7 +4,17 @@ import { parkTypesArray } from "./parkTypeData.mjs";
 
 window.onload = function() {
     //load the dropdown list
-    initSearchFilter();
+    // initSearchFilter();
+    const locationList = document.querySelector('#locationsList');
+    const parkTypeList = document.querySelector('#parkTypeList');
+    initLocationListDropdown();
+    locationList.onclick = () => parkTypeList.selectedIndex = 0;
+
+    initParkTypeDropdown();
+    parkTypeList.onclick = () => locationList.selectedIndex = 0;
+    
+    initParkListDropdown();
+
 }
 
 function initSearchFilter() {
@@ -17,13 +27,15 @@ function initSearchFilter() {
         const parkTypeList = document.querySelector('#parkTypeList');
 
         if (e.target === locationRadio) {
+            parkTypeList.options.length = 1;
             initLocationListDropdown();
-            parkTypeList.style.display = 'none';
-            locationList.style.display = 'block';
+            // parkTypeList.style.display = 'none';
+            // locationList.style.display = 'block';
         } else if (e.target === parkTypeRadio) {
+            locationList.options.length = 1;
             initParkTypeDropdown();
-            locationList.style.display = 'none';
-            parkTypeList.style.display = 'block';
+            // locationList.style.display = 'none';
+            // parkTypeList.style.display = 'block';
         }
     initParkListDropdown();
     });
