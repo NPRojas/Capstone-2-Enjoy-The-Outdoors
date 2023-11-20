@@ -55,9 +55,13 @@ header {
     background-color: #EFF1ED;
     padding: 10px;
 }
-
 .searchSection {
     background-image: url(/photos/zionPark1.jpg);
+}
+.mountainSearchSection {
+    background-image: url(/photos/mountain1.jpg);
+}
+.searchSection, .mountainSearchSection {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -75,6 +79,12 @@ header {
 
 
 .searchSection > h2 {
+    margin-bottom: 5px;
+    margin-top: 150px;
+    font-size: 64px;
+}
+
+.mountainSearchSection > h2 {
     margin-bottom: 5px;
     margin-top: 150px;
     font-size: 64px;

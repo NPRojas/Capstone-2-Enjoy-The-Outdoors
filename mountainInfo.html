@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park Search</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">
+                <img class="youngTree" src="./photos/youngTree.png" alt="a black and white drawing of a young tree">
+                <span>National Park Finder</span>
+            </div>
+            <div class="navbarMain">
+               <div><a href="./index.html">HOMEPAGE</a></div>
+               <div><a href="./searchPage.html">PARK FINDER</a></div>
+               <div><a href="./mountainInfo.html">MOUNTAIN FINDER</a></div>
+            </div>
+        </header>
+        <main>
+            <div class="mountainSearchSection">
+                <h2>Mountains Finder</h2>
+                <div>Find your next adventure</div>
+                <div class="dropdowns">
+                    <select name="mountainList" id="mountainList">
+                        <option value="">Search By State</option>
+                    </select>
+                </div>
+            </div>
+            <div class="displaySection">
+                <h2>Displaying Mountains</h2>
+                <div class="articles">
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="./scripts/mountainInfo.mjs"></script>
+</body>
+</html>
