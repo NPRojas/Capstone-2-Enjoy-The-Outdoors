@@ -14,7 +14,7 @@ html, body {
 .container {
     display: grid;
     min-height: 100vh;
-    grid-template-rows: 1fr 10fr 2fr;
+    grid-template-rows: 100px 850px 2fr;
     grid-template-areas: 
     'navbar'
     'main'
@@ -25,6 +25,8 @@ html, body {
     display: flex;
     align-items: center;
     grid-area: navbar;
+    padding: 10px;
+    background-color: var(--white);
 }
 .icon {
     display: flex;
@@ -47,6 +49,9 @@ html, body {
 }
 
 .main {
+    background-image: url(/photos/zionPark3.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     display: flex;
     flex-direction: column;
     justify-content: end;
