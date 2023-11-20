@@ -3,42 +3,18 @@ import { locationsArray } from "./locationData.mjs";
 import { parkTypesArray } from "./parkTypeData.mjs";
 
 window.onload = function() {
-    //load the dropdown list
-    // initSearchFilter();
     const locationList = document.querySelector('#locationsList');
     const parkTypeList = document.querySelector('#parkTypeList');
+
+    //load the dropdown list
     initLocationListDropdown();
     locationList.onclick = () => parkTypeList.selectedIndex = 0;
 
     initParkTypeDropdown();
     parkTypeList.onclick = () => locationList.selectedIndex = 0;
     
-    initParkListDropdown();
+    initParkListCards();
 
-}
-
-function initSearchFilter() {
-    const radioBtnContainer = document.querySelector('#radioBtnContainer');
-    
-    radioBtnContainer.addEventListener('change', function (e) {
-        const locationRadio = document.querySelector('#location');
-        const parkTypeRadio = document.querySelector('#parkType');
-        const locationList = document.querySelector('#locationsList');
-        const parkTypeList = document.querySelector('#parkTypeList');
-
-        if (e.target === locationRadio) {
-            parkTypeList.options.length = 1;
-            initLocationListDropdown();
-            // parkTypeList.style.display = 'none';
-            // locationList.style.display = 'block';
-        } else if (e.target === parkTypeRadio) {
-            locationList.options.length = 1;
-            initParkTypeDropdown();
-            // locationList.style.display = 'none';
-            // parkTypeList.style.display = 'block';
-        }
-    initParkListDropdown();
-    });
 }
 
 function convertArraytoDropdown(array, dropdown) {
@@ -61,40 +37,84 @@ function initParkTypeDropdown() {
     convertArraytoDropdown(parkTypesArray, parkTypeList);
 }
 
-function initParkListDropdown() {
-    // const radioBtnContainer = document.querySelector('#radioBtnContainer');
+function initParkListCards() {
     const locationList = document.querySelector('#locationsList');
     const parkTypeList = document.querySelector('#parkTypeList');
-    const parkList = document.querySelector('#parkList');
-
-    let parksArrayLength = nationalParksArray.length;
+    const articles = document.querySelector('.articles');
 
     locationList.onchange = function() {
-        //clear the list
-        parkList.options.length = 1;
-        // add options to the list
-        for (let i = 0; i < parksArrayLength; i++) {
+        // clear the article div
+        articles.textContent = '';
 
-            if (locationList.value == nationalParksArray[i].State) {
-                let theOption = new Option(nationalParksArray[i].LocationName, nationalParksArray[i].LocationID);
-                parkList.appendChild(theOption);
+        let displayCardNum = 0;
+        let rowNum = 0;
+        let row;
+
+        nationalParksArray.forEach((element) => {
+
+            if (locationList.value == element.State) {
+                
+                if (displayCardNum % 3 === 0) {
+                    rowNum++;
+                    row = document.createElement('div');
+                    row.setAttribute('class', `row-${rowNum}`);
+                    articles.appendChild(row);
+                }
+                                
+                const displayCard = document.createElement('div');
+                displayCard.setAttribute('class', 'displayCard');
+                const img = document.createElement('img');
+                img.setAttribute('class', 'cardImg');
+                const lineOne = document.createElement('p');
+                lineOne.textContent = element.LocationName;
+                const lineTwo = document.createElement('p');
+                lineTwo.textContent = element.Address;
+                const lineThree = document.createElement('p');
+                lineThree.textContent = `${element.City}, ${element.State}, ${element.ZipCode}`;
+                displayCard.append(img,lineOne,lineTwo,lineThree);
+
+                row.appendChild(displayCard);
+                displayCardNum++;
+
             }
-        }
+        });
     }
 
     parkTypeList.onchange = function() {
-        parkList.options.length = 1;
+         // clear the article div
+         articles.textContent = '';
 
-        for (let i = 0; i < parksArrayLength; i++) {
-            if(nationalParksArray[i].LocationName.includes(parkTypeList.value)) {
-                let theOption = new Option(nationalParksArray[i].LocationName, nationalParksArray[i].LocationID);
-                parkList.appendChild(theOption);
+         let displayCardNum = 0;
+         let rowNum = 0;
+         let row;
+
+        nationalParksArray.forEach((element) => {
+
+            if (element.LocationName.includes(parkTypeList.value)) {
+
+                if (displayCardNum % 3 === 0) {
+                    rowNum++;
+                    row = document.createElement('div');
+                    row.setAttribute('class', `row-${rowNum}`);
+                    articles.appendChild(row);
+                }
+                                
+                const displayCard = document.createElement('div');
+                displayCard.setAttribute('class', 'displayCard');
+                const img = document.createElement('img');
+                img.setAttribute('class', 'cardImg');
+                const lineOne = document.createElement('p');
+                lineOne.textContent = element.LocationName;
+                const lineTwo = document.createElement('p');
+                lineTwo.textContent = element.Address;
+                const lineThree = document.createElement('p');
+                lineThree.textContent = `${element.City}, ${element.State}, ${element.ZipCode}`;
+                displayCard.append(img,lineOne,lineTwo,lineThree);
+
+                row.appendChild(displayCard);
+                displayCardNum++;
             }
-
-        }
+        });
     }
 }
 
-function constructDisplayCard(arrayItem) {
-    
-}
