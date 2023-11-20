@@ -94,3 +94,7 @@ function initParkListDropdown() {
         }
     }
 }
+
+function constructDisplayCard(arrayItem) {
+    
+}

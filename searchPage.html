@@ -7,27 +7,81 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <header>
-        <h1>Hello</h1>
-    </header>
-    <main>
-        <div id="radioBtnContainer">
-            <label for="location">Location</label>
-            <input type="radio" id="location" value="location" name="searchFilter">
-            <label for="parkType">Park Type</label>
-            <input type="radio" id="parkType" value="parkType" name="searchFilter">
-        </div>
-
-        <select name="locationsList" id="locationsList">
-            <option value="">Select One</option>
-        </select>
-        <select name="parkTypeList" id="parkTypeList">
-            <option value="">Select One</option>
-        </select>
-        <select name="parkList" id="parkList">
-            <option value="">Select One</option>
-        </select>
-    </main>
+    <div class="container">
+        <header>
+            <div class="icon">
+                <img class="youngTree" src="./photos/youngTree.png" alt="a black and white drawing of a young tree">
+                <span>National Park Finder</span>
+            </div>
+            <div class="navbarMain">
+               <div><a href="./index.html">HOMEPAGE</a></div>
+               <div><a href="./searchPage.html">PARK FINDER</a></div>
+               <div><a href="./mountainInfo.html">MOUNTAIN FINDER</a></div>
+            </div>
+        </header>
+        <main>
+            <!-- <div id="radioBtnContainer">
+                <label for="location">Location</label>
+                <input type="radio" id="location" value="location" name="searchFilter">
+                <label for="parkType">Park Type</label>
+                <input type="radio" id="parkType" value="parkType" name="searchFilter">
+            </div> -->
+            <div class="searchSection">
+                <h2>National Parks</h2>
+                <div>Find your next adventure</div>
+                <div class="dropdowns">
+                    <select name="locationsList" id="locationsList">
+                        <option value="">Select One</option>
+                    </select>
+                    <select name="parkTypeList" id="parkTypeList">
+                        <option value="">Select One</option>
+                    </select>
+                    <select name="parkList" id="parkList">
+                        <option value="">Select One</option>
+                    </select>
+                </div>
+            </div>
+            <div class="displaySection">
+                <h2>Displaying Parks</h2>
+                <div class="articles">
+                    <div class="row-1">
+                        <div class="displayCard">
+                            <img class="cardImg" src="./photos/mountain.jpg" alt="a placeholder for a park img">
+                            <p>Acadia National Park</p>
+                            <p>2995 Lincoln Farm Road</p>
+                            <p>Hodgenville, Kentucky</p>
+                        </div>
+                        <div class="displayCard">
+                            <img class="cardImg" src="./photos/mountain.jpg" alt="a placeholder for a park img">
+                            <p>Acadia National Park</p>
+                            <p>2995 Lincoln Farm Road</p>
+                            <p>Hodgenville, Kentucky</p>
+                        </div>
+                        <div class="displayCard">
+                            <img class="cardImg" src="./photos/mountain.jpg" alt="a placeholder for a park img">
+                            <p>Acadia National Park</p>
+                            <p>2995 Lincoln Farm Road</p>
+                            <p>Hodgenville, Kentucky</p>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <div class="displayCard">
+                            <img class="cardImg" src="./photos/mountain.jpg" alt="a placeholder for a park img">
+                            <p>Acadia National Park</p>
+                            <p>2995 Lincoln Farm Road</p>
+                            <p>Hodgenville, Kentucky</p>
+                        </div>
+                        <div class="displayCard">
+                            <img class="cardImg" src="./photos/mountain.jpg" alt="a placeholder for a park img">
+                            <p>Acadia National Park</p>
+                            <p>2995 Lincoln Farm Road</p>
+                            <p>Hodgenville, Kentucky</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
     <script type="module" src="./scripts/searchPage.mjs"></script>
 </body>
 </html>
